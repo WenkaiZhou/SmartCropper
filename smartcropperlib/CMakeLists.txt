@@ -44,6 +44,6 @@ target_link_libraries(${TARGET} log jnigraphics z)
 
 if(${ANDROID_ABI} STREQUAL x86 OR ${ANDROID_ABI} STREQUAL x86_64)
     target_link_libraries(${TARGET} opencv_imgproc opencv_core ippiw ippicv ittnotify tbb cpufeatures)
-else()
-    target_link_libraries(${TARGET} opencv_imgproc opencv_core tegra_hal tbb cpufeatures)
+elseif(${ANDROID_ABI} STREQUAL arm64-v8a OR ${ANDROID_ABI} STREQUAL armeabi-v7a)
+    target_link_libraries(${TARGET} opencv_imgproc opencv_core tegra_hal ittnotify tbb cpufeatures )
 endif()
